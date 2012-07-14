@@ -1,0 +1,13 @@
+XXXXXXXXXXXXX
+X      YYYY X
+X XYX X X X X
+X           X
+X X XYX X X X
+XYYY   YY   X
+X X X X X X X
+X           X
+X X X X X X X
+X       YYY X
+X X X X X X X
+X   S  Y    X
+XXXXXXXXXXXXX
