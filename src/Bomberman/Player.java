@@ -5,7 +5,10 @@ public class Player extends Creature {
 	
 	private int player;
 	private int fc=0;
+    private int bombradius=1;
 	private boolean anim_only=false;
+	private boolean powerup=false;
+	private boolean flower=false;
 	private String currentDirection;
 	
 	Player(TileMap map, int tile_posX, int tile_posY) {
@@ -14,7 +17,9 @@ public class Player extends Creature {
 		posY = map.Y_TileToPixel(tile_posY) - 10;
 		this.player=players+1;
 		players++;
-		map.main.inputManager.setPlayer(this);
+		
+		if (player==1) map.main.inputManager.setPlayer1(this);
+		if (player==2) map.main.inputManager.setPlayer2(this);
 		this.setImage(ImageLoader.getImage("player" + player + "_down_1"));
 		
 		// TODO Auto-generated constructor stub
@@ -28,6 +33,15 @@ public class Player extends Creature {
 			if(direction.equals("up")) {
 				//anim_only = map.tiles[tile_posX][tile_posY - 1].isBlocked();
 				anim_only = map.tiles[posX/16][(posY + 10)/16 - 1].isBlocked();
+				powerup = map.tiles[posX/16][(posY + 10)/16 - 1].isPowerup();
+				flower = map.tiles[posX/16][(posY + 10)/16 - 1].isFlower();
+				if (!anim_only && powerup) {
+					bombradius++;				
+				}
+				//else if (!anim_only && flower){
+					//main.restart("flowermap");
+				//}
+				//map.main.map= new TileMap(map.main, "bonusmap");
 				System.out.println(anim_only); //debug
 				currentDirection = direction;
 				isMoving = true;
@@ -35,6 +49,12 @@ public class Player extends Creature {
 			} else if (direction.equals("down")) {
 				//anim_only = map.tiles[tile_posX][tile_posY + 1].isBlocked();
 				anim_only = map.tiles[posX/16][(posY + 10)/16 + 1].isBlocked();
+				powerup = map.tiles[posX/16][(posY + 10)/16 - 1].isPowerup();
+				flower = map.tiles[posX/16][(posY + 10)/16 - 1].isFlower();
+				if (!anim_only && powerup) {
+					bombradius++;				
+				}
+				
 				System.out.println(anim_only); //debug
 				currentDirection = direction;
 				isMoving = true;
@@ -42,6 +62,12 @@ public class Player extends Creature {
 			} else if (direction.equals("left")) {
 				//anim_only = map.tiles[tile_posX - 1][tile_posY].isBlocked();
 				anim_only = map.tiles[posX/16 - 1][(posY + 10)/16].isBlocked();
+				powerup = map.tiles[posX/16][(posY + 10)/16 - 1].isPowerup();
+				flower = map.tiles[posX/16][(posY + 10)/16 - 1].isFlower();
+				if (!anim_only && powerup) {
+					bombradius++;				
+				}
+				
 				System.out.println(anim_only); //debug
 				currentDirection = direction;
 				isMoving = true;
@@ -49,6 +75,12 @@ public class Player extends Creature {
 			} else if (direction.equals("right")) {
 				//anim_only = map.tiles[tile_posX + 1][tile_posY].isBlocked();
 				anim_only = map.tiles[posX/16 + 1][(posY + 10)/16].isBlocked();
+				powerup = map.tiles[posX/16][(posY + 10)/16 - 1].isPowerup();
+				flower = map.tiles[posX/16][(posY + 10)/16 - 1].isFlower();
+				if (!anim_only && powerup) {
+					bombradius++;				
+				}
+				
 				System.out.println(anim_only); //debug
 				currentDirection = direction;	
 				isMoving = true;

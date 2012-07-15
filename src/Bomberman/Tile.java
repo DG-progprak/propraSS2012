@@ -6,24 +6,42 @@ public class Tile {
 	
 	private ImageIcon image;
 	private boolean blocked;
+	private boolean exit;
+	private boolean powerup;
+	private boolean flower;
+	
 	
 	Tile(char type){
 		switch(type){
-		// X = unzerstörbare Mauer
+		// X = unzerstoerbare Mauer
 		case 'X' :	setBlocked(true);
 					setImage(ImageLoader.getTileImage(type));
 					break;
-		// G = sichtbare Tür			
+		// G = sichtbare Tuer			
 		case 'G' :	setBlocked(false);
+					setExit(true);
 					setImage(ImageLoader.getTileImage(type));
 					break;
 					
-		// Y = lockerer Stein		
+		// P = Powerup		
+		case 'P' :	setBlocked(false);
+					setPowerup(true);
+					setImage(ImageLoader.getTileImage(type));
+					break;
+			
+		// F = Flower		
+		case 'F' :	setBlocked(false);
+					setFlower(true);
+					setImage(ImageLoader.getTileImage(type));
+					break;
+					
+					
+		// Y = lockerer Stein (spÃ¤ter als Sprite)
 		case 'Y' :	setBlocked(true);
 					setImage(ImageLoader.getTileImage(type));
 					break;
 		
-		// S = versteckte Tür hinter lockerem Stein
+		// S = versteckte Tuer hinter lockerem Stein
 		case 'S' :	setBlocked(true);
 					setImage(ImageLoader.getTileImage(type));
 					break;
@@ -50,6 +68,33 @@ public class Tile {
 	
 	public void setBlocked(boolean blocked){
 		this.blocked = blocked;
+	}
+	
+	//Ausgang
+	public boolean isExit(){
+		return exit;
+	}
+	
+	public void setExit(boolean exit){
+		this.exit = exit;
+	}
+
+	//Powerup
+	public boolean isPowerup(){
+		return powerup;
+	}
+	
+	public void setPowerup(boolean powerup){
+		this.powerup = powerup;
+	}
+	
+	//Flower
+	public boolean isFlower(){
+		return flower;
+	}
+	
+	public void setFlower(boolean flower){
+		this.flower = flower;
 	}
 
 }

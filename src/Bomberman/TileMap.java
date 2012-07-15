@@ -45,7 +45,7 @@ public class TileMap {
 		}
 		
 		spawn_player1();
-
+		spawn_player2();
 	}
 
 	
@@ -55,6 +55,10 @@ public class TileMap {
 	
 	public void spawn_player1(){
 		sprites.add(new Player(this, 1, 1) );
+	}
+	
+	public void spawn_player2(){
+		sprites.add(new Player(this, 11, 11) );
 	}
 	
 	public void spawnBomb(int posX, int posY){

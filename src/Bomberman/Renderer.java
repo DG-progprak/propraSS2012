@@ -46,9 +46,6 @@ public class Renderer {
 		Enumeration<Sprite> sprites = map.sprites.elements();
 		while( sprites.hasMoreElements() ){
 			sprite = sprites.nextElement();
-			//debug
-			//System.out.println(sprite.toString());
-			//System.out.println(sprite.getImage().toString());
 			g2.drawImage(sprite.getImage().getImage(), sprite.get_posX(), sprite.get_posY(), null);
 		}
 		

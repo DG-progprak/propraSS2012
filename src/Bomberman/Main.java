@@ -12,7 +12,6 @@ public class Main {
 	
 	boolean restart=false;
 	String mapname;
-	
 
 	/**
 	 * @param args
@@ -32,22 +31,19 @@ public class Main {
 		gameLoop();
 	}
 	
-	
 	public void restart(String mapname){
 		this.restart=true;
 		this.mapname=mapname;
 	}
 	
 	public void newGame(String mapname){
-		//reset player count
+		//player zurücksetzen
 		Player.players = 0;
-		//create new map object
-		this.map =  new TileMap(this,mapname);
+		//neues map-objekt
+		this.map = new TileMap(this,mapname);
 		//render basic map
 		renderer.renderTileMap(this.map);
 	}
-	
-	
 	
 	private void gameLoop(){
 		int goalFPS = 60;
@@ -72,6 +68,7 @@ public class Main {
 				newGame(mapname);
 				restart=false;
 			}
+			
 			//update game
 			map.updateSprites();
 			
