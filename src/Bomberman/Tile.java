@@ -1,10 +1,13 @@
 package Bomberman;
 
+import java.util.ArrayList;
+
 import javax.swing.ImageIcon;
 
 public class Tile {
 	
 	private ImageIcon image;
+	private ArrayList<Sprite> sprites = new ArrayList<Sprite>();
 	private boolean blocked;
 	private boolean exit;
 	private boolean powerup;
@@ -13,16 +16,18 @@ public class Tile {
 	
 	Tile(char type){
 		switch(type){
-		// X = unzerstoerbare Mauer
+		// 'X' = block
 		case 'X' :	setBlocked(true);
 					setImage(ImageLoader.getTileImage(type));
 					break;
-		// G = sichtbare Tuer			
+
+		// G = goal			
 		case 'G' :	setBlocked(false);
 					setExit(true);
 					setImage(ImageLoader.getTileImage(type));
 					break;
-					
+		
+		/*
 		// P = Powerup		
 		case 'P' :	setBlocked(false);
 					setPowerup(true);
@@ -35,20 +40,27 @@ public class Tile {
 					setImage(ImageLoader.getTileImage(type));
 					break;
 					
-					
-		// Y = lockerer Stein (später als Sprite)
+		
+		// S = lockerer Stein (später als Sprite)
 		case 'Y' :	setBlocked(true);
 					setImage(ImageLoader.getTileImage(type));
 					break;
+
+					
+		// S = stone
+		case 'Y' :	setBlocked(true);
+					setImage(ImageLoader.getTileImage(type));
+					break;			
 		
-		// S = versteckte Tuer hinter lockerem Stein
+		// H = versteckte Tuer hinter lockerem Stein
 		case 'S' :	setBlocked(true);
 					setImage(ImageLoader.getTileImage(type));
 					break;
-		// Boden
+		*/
+					
+		// floor
 		default:	setBlocked(false);
-					setImage(ImageLoader.getTileImage(type));
-					break;
+					setImage(ImageLoader.getTileImage(' '));
 	}
 		
 	}
@@ -95,6 +107,15 @@ public class Tile {
 	
 	public void setFlower(boolean flower){
 		this.flower = flower;
+	}
+	
+	
+	public void addSprite(Sprite sprite){
+		sprites.add(sprite);
+	}
+	
+	public void removeSprite(Sprite sprite){
+		sprites.remove(sprite);
 	}
 
 }

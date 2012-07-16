@@ -11,12 +11,16 @@ public abstract class Sprite {
 	protected int posX;
 	protected int posY;
 	
+	private int z = 0;
+	
 	TileMap map;
 	
 	Sprite(TileMap map, int tile_posX, int tile_posY){
 		this.map = map;
 		this.tile_posX = tile_posX;
 		this.tile_posY = tile_posY;
+		posX = map.X_TileToPixel(tile_posX);
+		posY = map.Y_TileToPixel(tile_posY);
 	}
 	
 	
@@ -28,14 +32,32 @@ public abstract class Sprite {
 		return image;
 	}
 	
-	public int get_posX(){
+	public int posX(){
 		return posX;
 	}
 	
-	public int get_posY(){
+	public int posY(){
 		return posY;
 	}
 	
+	public int tposX(){
+		return (posX/16);
+	}
+	
+	public int tposY(){
+		return (posY/16);
+	}
+	
+	protected void destroy(){
+		map.tiles[ tposX() ][ tposY() ].removeSprite(this);
+		map.sprites.remove(this);
+	}
+	
 	abstract public void update();
+
+	
+	public int getZ() {
+		return z;
+	}
 
 }

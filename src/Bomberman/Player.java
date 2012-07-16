@@ -3,6 +3,8 @@ package Bomberman;
 public class Player extends Creature {
 	public static int players=0;
 	
+	private int z = 2;
+	
 	private int player;
 	private int fc=0;
     private int bombradius=1;
@@ -86,7 +88,7 @@ public class Player extends Creature {
 				isMoving = true;
 				
 			} else if (direction.equals("plant")) {
-				map.spawnBomb(posX/16,(posY + 10)/16);
+				map.spawnBomb( tposX(), tposY(), bombradius );
 			}
 			
 		}	
@@ -117,6 +119,15 @@ public class Player extends Creature {
 		}
 	}
 	
+
+	public int tposY(){
+		return ((posY+10)/16);
+	}
+
+
+	public int getZ() {
+		return z;
+	}
 	
 
 }

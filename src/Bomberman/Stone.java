@@ -1,9 +1,12 @@
 package Bomberman;
 
-public class BrittleWall extends Sprite{
+public class Stone extends Sprite{
+	
+	private int z = 1;
 
-	BrittleWall(TileMap map, int tilePosX, int tilePosY) {
+	Stone(TileMap map, int tilePosX, int tilePosY) {
 		super(map, tilePosX, tilePosY);
+		this.setImage(ImageLoader.getImage("stone"));
 		// TODO Auto-generated constructor stub
 	}
 
@@ -14,7 +17,12 @@ public class BrittleWall extends Sprite{
 	}
 	
 	public void explode(){
-		
+		//TODO
+	}
+
+
+	public int getZ() {
+		return z;
 	}
 
 }

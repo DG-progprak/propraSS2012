@@ -4,7 +4,9 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.awt.image.ColorModel;
 import java.awt.image.WritableRaster;
+import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.HashMap;
 
 
 public class Renderer {
@@ -25,7 +27,7 @@ public class Renderer {
 		return mapImage;	
 	}
 	
-	//https://forums.oracle.com/forums/thread.jspa?threadID=1267489
+	// https://forums.oracle.com/forums/thread.jspa?threadID=1267489
 	public BufferedImage deepCopy(BufferedImage bi) {
         ColorModel cm = bi.getColorModel();
         boolean isAlphaPremultiplied = cm.isAlphaPremultiplied();
@@ -35,18 +37,24 @@ public class Renderer {
 	
 	
 	public BufferedImage renderFrame(TileMap map){
-		Sprite sprite;
+
 		frame = deepCopy(mapImage);
 		Graphics2D g2 = frame.createGraphics();
-		//render bomb
-		if (map.player1_bomb != null) {
-			g2.drawImage(map.player1_bomb.getImage().getImage(), map.player1_bomb.get_posX(), map.player1_bomb.get_posY(), null);
+	
+		HashMap<String, ArrayList<Sprite> > sprites = new HashMap<String, ArrayList<Sprite> >();
+		// create i ArrayLists for i different z layers
+		for (int i=0; i<4; i++){
+			sprites.put("layer" + i, new ArrayList<Sprite>());
 		}
-		//render sprites
-		Enumeration<Sprite> sprites = map.sprites.elements();
-		while( sprites.hasMoreElements() ){
-			sprite = sprites.nextElement();
-			g2.drawImage(sprite.getImage().getImage(), sprite.get_posX(), sprite.get_posY(), null);
+		
+		// distribute sprites to z layers
+		for (Sprite sprite : map.sprites){
+			sprites.get("layer" + sprite.getZ()).add(sprite);
+		}
+		
+		// draw sprites in z order
+		for (int i=0; i<4; i++){
+			for (Sprite sprite : sprites.get("layer" + i)) g2.drawImage(sprite.getImage().getImage(), sprite.posX(), sprite.posY(), null);
 		}
 		
 		g2.dispose(); //free resources

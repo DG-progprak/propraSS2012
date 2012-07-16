@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.BufferedInputStream;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Vector;
 
@@ -14,7 +15,7 @@ public class TileMap {
 	public int mapWidth = 13;
 	
 	public Tile[][] tiles = new Tile[mapHeight][mapWidth];
-	Vector<Sprite> sprites = new Vector<Sprite>();
+	ArrayList<Sprite> sprites = new ArrayList<Sprite>();
 	
 
 	public Bomb player1_bomb;
@@ -44,26 +45,71 @@ public class TileMap {
 			System.err.println(e);
 		}
 		
-		spawn_player1();
-		spawn_player2();
+		spawnSprite(1, 1, 'P');
+		spawnSprite(11, 11, 'P');
+		
+		//spawn_player1();
+		//spawn_player2();
 	}
 
 	
 	public void setTile(int x, int y, char tiletype){
-		tiles[x][y] = new Tile(tiletype);
-	}
-	
-	public void spawn_player1(){
-		sprites.add(new Player(this, 1, 1) );
-	}
-	
-	public void spawn_player2(){
-		sprites.add(new Player(this, 11, 11) );
-	}
-	
-	public void spawnBomb(int posX, int posY){
-		player1_bomb = new Bomb(this, posX, posY);
+		System.out.println("setting tile [" + x + "," + y + "] to type: " + tiletype);
+		switch(tiletype){
 		
+			//block
+			case 'X' :	tiles[x][y] = new Tile('X');
+						break;
+		
+			//floor
+			case ' ' :	tiles[x][y] = new Tile(' ');
+						break;
+		
+			//goal
+			case 'G' :	tiles[x][y] = new Tile('G');
+						break;
+			//stone
+			case 'S' :  tiles[x][y] = new Tile(' ');
+						spawnSprite(x, y, 'S');
+						break;
+		
+			//goal behind stone
+			case 'H' :  tiles[x][y] = new Tile('G');
+						spawnSprite(x, y, 'S');
+						break;
+
+			default  :  tiles[x][y] = new Tile(' ');
+		
+		}
+				
+	}
+	
+	public void spawnSprite(int x, int y, char type){
+		Sprite sprite=null;
+		
+		switch(type){
+		
+		case 'E':	sprite = new Explosion (this, x, y);
+					break;
+					
+		case 'P':	sprite = new Player (this, x, y);
+					break;
+					
+		case 'S':	sprite = new Stone (this, x, y);
+					break;
+		}
+	
+		if(sprite != null){
+			tiles[x][y].addSprite(sprite);
+			sprites.add(sprite);
+		}
+	}
+	
+	
+	public void spawnBomb(int x, int y, int bombradius){
+		Sprite sprite = new Bomb (this, x, y, bombradius);
+		tiles[x][y].addSprite(sprite);
+		sprites.add(sprite);
 	}
 	
 	//TODO ?create datatype position with toPixel and toTile functions?
@@ -94,34 +140,11 @@ public class TileMap {
 		
 	
 	public void updateSprites(){
-		Sprite sprite;
-		Enumeration<Sprite> sprites = this.sprites.elements();
-		while( sprites.hasMoreElements() ){
-			sprite = sprites.nextElement();
+		ArrayList<Sprite> spritescopy = new ArrayList<Sprite>(sprites);
+		for(Sprite sprite : spritescopy){
 			sprite.update();
 		}
-		//update bomb
-		if (player1_bomb != null) {
-			System.out.println("bomb is set: update()"); //debug
-			player1_bomb.update();
-		}
 	}
 	
-	//debug
-	public void printSpritePositions(){
-		Sprite sprite;
-		Enumeration<Sprite> sprites = this.sprites.elements();
-		while( sprites.hasMoreElements() ){
-			sprite = sprites.nextElement();
-			System.out.println(sprite.toString() + " " + sprite.posX + " " + sprite.posY);
-		}
-	}
-	
-	public void printTileStatus(){
-		for (int i = 0; i < mapHeight; i++){
-			System.out.println(tiles[0][i].isBlocked());	
-		}
-	}
-
 
 }
