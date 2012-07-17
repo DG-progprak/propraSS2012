@@ -57,27 +57,34 @@ public class TileMap {
 		System.out.println("setting tile [" + x + "," + y + "] to type: " + tiletype);
 		switch(tiletype){
 		
-			//block
-			case 'X' :	tiles[x][y] = new Tile('X');
-						break;
-		
 			//floor
 			case ' ' :	tiles[x][y] = new Tile(' ');
 						break;
-		
-			//goal
-			case 'G' :	tiles[x][y] = new Tile('G');
+						
+			//block
+			case 'X' :	tiles[x][y] = new Tile('X');
 						break;
+								
 			//stone
 			case 'S' :  tiles[x][y] = new Tile(' ');
 						spawnSprite(x, y, 'S');
-						break;
+						break;			
 		
+			//goal
+			case 'g' :	tiles[x][y] = new Tile('g');
+						break;
+						
 			//goal behind stone
-			case 'H' :  tiles[x][y] = new Tile('G');
+			case 'G' :  tiles[x][y] = new Tile('G');
 						spawnSprite(x, y, 'S');
 						break;
-
+						
+			//item
+			case 'i' :  tiles[x][y] = new Tile(' ');
+						spawnSprite(x, y, 'i');
+						break;					
+						
+			//default : floor
 			default  :  tiles[x][y] = new Tile(' ');
 		
 		}
@@ -97,6 +104,10 @@ public class TileMap {
 					
 		case 'S':	sprite = new Stone (this, x, y);
 					break;
+					
+		case 'i':	sprite = new Powerup (this, x, y);
+					break;
+		
 		}
 	
 		if(sprite != null){

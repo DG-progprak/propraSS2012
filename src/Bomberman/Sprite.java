@@ -62,6 +62,10 @@ public abstract class Sprite {
 	public void explode(){
 		
 	}
+	
+	public void visit(Player player){
+		
+	}
 
 	
 	public int getZ() {

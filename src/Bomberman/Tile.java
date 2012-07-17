@@ -24,7 +24,7 @@ public class Tile {
 					break;
 
 		// G = goal			
-		case 'G' :	setBlocked(false);
+		case 'g' :	setBlocked(false);
 					setExit(true);
 					setImage(ImageLoader.getTileImage(type));
 					break;
@@ -130,4 +130,12 @@ public class Tile {
 			sprite.explode();
 		}
 	}
+	
+	public void visit(Player player){
+		ArrayList<Sprite> spritescopy = new ArrayList<Sprite>(sprites);
+		for(Sprite sprite : spritescopy){
+			sprite.visit(player);
+		}
+	}
+	
 }

@@ -90,6 +90,9 @@ public class Player extends Creature {
 				
 				//add sprite to new tile location
 				map.tiles[tposX()][tposY()].addSprite(this);
+				
+				//tell tile player is there
+				map.tiles[tposX()][tposY()].visit(this);
 
 			}
 			
