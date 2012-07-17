@@ -28,26 +28,40 @@ public class Bomb extends Sprite {
 				tick++;
 				fc=0;
 			}
-		//destroy
+		//detonate
 			if (tick == maxticks) {
 				detonate();
-				destroy();
 			}
 					
 	}
 
 	private void detonate(){
-		map.spawnSprite(tposX(), tposY(), 'E');
-		for (int i=1; i<=bombradius; i++){
-			map.spawnSprite(tposX()-i, tposY(), 'E');
-			map.spawnSprite(tposX(), tposY()-i, 'E');
-			map.spawnSprite(tposX()+i, tposY(), 'E');
-			map.spawnSprite(tposX(), tposY()+i, 'E');
+		//remove bomb
+		destroy();
+		//on spot
+		blast(0, 0, 1);
+		//up
+		blast(0, -1, bombradius);
+		//down
+		blast(0, 1, bombradius);
+		//left
+		blast(-1, 0, bombradius);
+		//right
+		blast(1, 0, bombradius);	
+	}
+	
+	private void blast(int x, int y, int bombradius){
+		int i=1;
+		while(i <= bombradius && !map.tiles[ tposX()+(x*i) ][ tposY()+(y*i) ].isBlock() ){
+			map.tiles[ tposX()+(x*i) ][ tposY()+(y*i) ].explode();
+			map.spawnSprite(tposX()+(x*i), tposY()+(y*i), 'E');
+			i++;
 		}
 	}
 	
-	public int getZ() {
-		return z;
+	
+	public void explode(){
+		detonate();
 	}
 	
 }

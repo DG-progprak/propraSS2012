@@ -4,25 +4,22 @@ public class Stone extends Sprite{
 	
 	private int z = 1;
 
-	Stone(TileMap map, int tilePosX, int tilePosY) {
-		super(map, tilePosX, tilePosY);
+	Stone(TileMap map, int tposX, int tposY) {
+		super(map, tposX, tposY);
 		this.setImage(ImageLoader.getImage("stone"));
+		map.tiles[tposX][tposY].setBlocked(true);
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
 	
 	public void explode(){
-		//TODO
+		destroy();
 	}
-
-
-	public int getZ() {
-		return z;
+	
+	protected void destroy(){
+		map.tiles[ tposX() ][ tposY() ].setBlocked(false);
+		map.tiles[ tposX() ][ tposY() ].removeSprite(this);
+		map.sprites.remove(this);
 	}
 
 }

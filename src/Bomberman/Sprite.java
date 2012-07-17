@@ -11,7 +11,7 @@ public abstract class Sprite {
 	protected int posX;
 	protected int posY;
 	
-	private int z = 0;
+	protected int z = 0;
 	
 	TileMap map;
 	
@@ -41,11 +41,13 @@ public abstract class Sprite {
 	}
 	
 	public int tposX(){
-		return (posX/16);
+		//add half tile size to compensate for image origin being on upper left tile corner
+		return ( (posX + 8) / 16 );
 	}
 	
 	public int tposY(){
-		return (posY/16);
+		//add half tile size to compensate for image origin being on upper left tile corner
+		return ( (posY + 8) / 16);
 	}
 	
 	protected void destroy(){
@@ -53,7 +55,13 @@ public abstract class Sprite {
 		map.sprites.remove(this);
 	}
 	
-	abstract public void update();
+	public void update(){
+		
+	}
+	
+	public void explode(){
+		
+	}
 
 	
 	public int getZ() {

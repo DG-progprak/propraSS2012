@@ -9,6 +9,7 @@ public class Tile {
 	private ImageIcon image;
 	private ArrayList<Sprite> sprites = new ArrayList<Sprite>();
 	private boolean blocked;
+	private boolean isBlock=false;
 	private boolean exit;
 	private boolean powerup;
 	private boolean flower;
@@ -18,6 +19,7 @@ public class Tile {
 		switch(type){
 		// 'X' = block
 		case 'X' :	setBlocked(true);
+					isBlock=true;
 					setImage(ImageLoader.getTileImage(type));
 					break;
 
@@ -118,4 +120,14 @@ public class Tile {
 		sprites.remove(sprite);
 	}
 
+	public boolean isBlock(){
+		return isBlock;
+	}
+	
+	public void explode(){
+		ArrayList<Sprite> spritescopy = new ArrayList<Sprite>(sprites);
+		for(Sprite sprite : spritescopy){
+			sprite.explode();
+		}
+	}
 }
