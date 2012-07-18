@@ -24,10 +24,10 @@ public class Tile {
 					break;
 
 		// G = goal			
-		case 'g' :	setBlocked(false);
-					setExit(true);
-					setImage(ImageLoader.getTileImage(type));
-					break;
+		//case 'g' :	setBlocked(false);
+				//	setExit(true);
+				//	setImage(ImageLoader.getTileImage(type));
+				//	break;
 		
 		/*
 		// P = Powerup		

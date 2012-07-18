@@ -25,7 +25,7 @@ public class Main {
 		gui = new GUI();
 		inputManager = new InputManager(this, gui.input);
 		ImageLoader.loadImages();
-		map = new TileMap(this,"testmapB");
+		map = new TileMap(this,"testmapC");
 		renderer = new Renderer();
 		isRunning=true;
 		gameLoop();

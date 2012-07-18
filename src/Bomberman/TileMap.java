@@ -71,18 +71,37 @@ public class TileMap {
 						break;			
 		
 			//goal
-			case 'g' :	tiles[x][y] = new Tile('g');
+			case 'g' :	tiles[x][y] = new Tile(' ');
+						spawnSprite(x, y, 'g');
 						break;
 						
 			//goal behind stone
-			case 'G' :  tiles[x][y] = new Tile('G');
+			case 'G' :  tiles[x][y] = new Tile(' ');
+						spawnSprite(x, y, 'g');
 						spawnSprite(x, y, 'S');
 						break;
 						
-			//item
+			//powerup
 			case 'i' :  tiles[x][y] = new Tile(' ');
 						spawnSprite(x, y, 'i');
-						break;					
+						break;	
+						
+			//powerup behind stone
+			case 'I' :  tiles[x][y] = new Tile(' ');
+						spawnSprite(x, y, 'i');
+						spawnSprite(x, y, 'S');
+						break;
+						
+			//flower
+			case 'f' : tiles[x][y] = new Tile(' ');
+						spawnSprite(x, y, 'f');
+						break;
+						
+		   //flower behind stone
+			case 'F' :  tiles[x][y] = new Tile(' ');
+						spawnSprite(x, y, 'f');
+						spawnSprite(x, y, 'S');
+						break;
 						
 			//default : floor
 			default  :  tiles[x][y] = new Tile(' ');
@@ -107,7 +126,13 @@ public class TileMap {
 					
 		case 'i':	sprite = new Powerup (this, x, y);
 					break;
-		
+					
+		case 'f':	sprite = new Flower (this, x, y);
+					break;
+					
+		case 'g':	sprite = new Goal (this, x, y);
+					break;
+
 		}
 	
 		if(sprite != null){

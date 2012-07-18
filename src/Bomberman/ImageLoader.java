@@ -64,6 +64,10 @@ public class ImageLoader {
 		//PowerUp 
 		images.put( "powerup" , new ImageIcon ("images/items/powerup.png") );
 		
+		//Exit
+		images.put( "goal" , new ImageIcon ("images/tiles/goal.png") );
+		
+				
 		//Bonuslevel
 		images.put( "flower" , new ImageIcon ("images/items/flower.png") );
 		
