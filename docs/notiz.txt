@@ -1,20 +1,11 @@
 
 /// Was fehlt uns noch?
 
-Bombe mit festem Radius, Auswirkungen auf Spieler und Steine, Kettenreaktionen 
 
-2 Spieler Modus FERTIG!
 
-Ausgang, Items hinter Mauersteinen versteckt (Mauersteine als Sprites)
+Einstellen ob 1 oder 2 Spieler
 
-Dokumentation Javadoc
-
-Handbuch FERTIG!
-
-Automatisches Neustarten nach Sieg, Niederlage 
 
 Menüführung 
 
-Funktionierende Items 
 
-+ etwas von den Zusatzanforderungen als Ersatz fürs Netzwerk

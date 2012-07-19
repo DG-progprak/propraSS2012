@@ -45,6 +45,20 @@ public class ImageLoader {
 		images.put( "player2_right_2" , new ImageIcon ("images/player/player2/right-1.png") );
 		images.put( "player2_fallen" , new ImageIcon ("images/player/player2/fallen.png") );
 		
+		
+		/** store enemy pictures in Map Images */
+		images.put( "monster_up_1" , new ImageIcon ("images/enemy/back-0.png") );
+		images.put( "monster_up_2" , new ImageIcon ("images/enemy/back-1.png") );
+		images.put( "monster_down_1" , new ImageIcon ("images/enemy/front-0.png") );
+		images.put( "monster_down_2" , new ImageIcon ("images/enemy/front-1.png") );
+		images.put( "monster_left_1" , new ImageIcon ("images/enemy/left-0.png") );
+		images.put( "monster_left_2" , new ImageIcon ("images/enemy/left-1.png") );
+		images.put( "monster_right_1" , new ImageIcon ("images/enemy/right-0.png") );
+		images.put( "monster_right_2" , new ImageIcon ("images/enemy/right-1.png") );
+		images.put( "monster_fallen" , new ImageIcon ("images/enemy/fallen.png") );
+		
+		
+		
 		//bomb
 		images.put( "bomb_1" , new ImageIcon ("images/bomb/bomb1.png") );
 		images.put( "bomb_2" , new ImageIcon ("images/bomb/bomb2.png") );

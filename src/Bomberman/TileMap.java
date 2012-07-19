@@ -38,9 +38,13 @@ public class TileMap {
 		} else {
 			//random map
 			MapGenerator gen = new MapGenerator(this, players);
-		}
+		} 
+	
+	
 		
-	}
+	} 
+	
+
 	
 	public void loadMap(String mapname) {
 		String currentLine;

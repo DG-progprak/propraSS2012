@@ -11,7 +11,8 @@ public class Monster extends Creature {
 		super(map, tilePosX, tilePosY);
 		posX = map.X_TileToPixel(tile_posX);
 		posY = map.Y_TileToPixel(tile_posY);
-		this.setImage(ImageLoader.getImage("bomb_1"));
+		//this.setImage(ImageLoader.getImage("bomb_1"));
+		this.setImage(ImageLoader.getImage("monster" + "_down_1"));
 		randomDirection();
 	}
 	
@@ -50,9 +51,9 @@ public class Monster extends Creature {
 		if (isMoving) {
 
 			//sprite animation
-			if (fc == 0 / s) setImage(ImageLoader.getImage("bomb_1"));
-			if (fc == 16 / s) setImage(ImageLoader.getImage("bomb_2"));
-			if (fc == 48 / s) setImage(ImageLoader.getImage("bomb_1"));
+			if (fc == 0 / s) setImage(ImageLoader.getImage("monster" + "_" + currentDirection + "_1"));
+			if (fc == 16 / s) setImage(ImageLoader.getImage("monster" + "_" + currentDirection + "_2"));
+			if (fc == 48 / s) setImage(ImageLoader.getImage("monster" + "_" + currentDirection + "_1"));
 
 			//actually move the sprites location
 			if (!anim_only) {
