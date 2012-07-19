@@ -4,6 +4,7 @@ package Bomberman;
 public class Main {
 	
 	public boolean isRunning;
+	public int players = 2;
 	
 	GUI gui;
 	TileMap map;
@@ -25,14 +26,15 @@ public class Main {
 		gui = new GUI();
 		inputManager = new InputManager(this, gui.input);
 		ImageLoader.loadImages();
-		map = new TileMap(this,"testmapC");
+		map = new TileMap(this,"random", players);
 		renderer = new Renderer();
 		isRunning=true;
 		gameLoop();
 	}
 	
-	public void restart(String mapname){
+	public void restart(String mapname, int players){
 		this.restart=true;
+		this. players=players;
 		this.mapname=mapname;
 	}
 	
@@ -40,7 +42,7 @@ public class Main {
 		//player zurücksetzen
 		Player.players = 0;
 		//neues map-objekt
-		this.map = new TileMap(this,mapname);
+		this.map = new TileMap(this, mapname, players);
 		//render basic map
 		renderer.renderTileMap(this.map);
 	}

@@ -76,7 +76,7 @@ public class Tile {
 	}
 	
 	public boolean isBlocked(){
-		System.out.println("Tile says blocked set to: " + blocked);
+		//System.out.println("Tile says blocked set to: " + blocked);
 		return blocked;
 	}
 	

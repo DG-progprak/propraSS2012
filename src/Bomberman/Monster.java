@@ -18,8 +18,6 @@ public class Monster extends Creature {
 	
 	public void action(String action) {
 
-		System.out.println("player: action " + action);// debug
-
 		if (!isMoving) {
 
 			if (action.equals("up") || action.equals("down") || action.equals("left") || action.equals("right")) {

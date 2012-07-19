@@ -22,9 +22,8 @@ public class keyListener implements KeyListener{
 	
 	@Override
 	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
 		char c = e.getKeyChar();
-		System.out.println("key pressed: " + c);
+		//System.out.println("key pressed: " + c);
 		if(c == 'w') up1 = true;
 		if(c == 's') down1 = true;
 		if(c == 'a') left1 = true;
@@ -45,7 +44,7 @@ public class keyListener implements KeyListener{
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
 		char c = e.getKeyChar();
-		System.out.println("key released: " + c);
+		//System.out.println("key released: " + c);
 		if(c == 'w') up1 = false;
 		if(c == 'a') down1 = false;
 		if(c == 's') left1 = false;

@@ -2,9 +2,6 @@ package Bomberman;
 
 public class Flower extends Item{
 	
-	Main main;
-
-	
 	Flower(TileMap map, int tilePosX, int tilePosY) {
 		super(map, tilePosX, tilePosY);
 		this.setImage(ImageLoader.getImage("flower"));
@@ -15,7 +12,7 @@ public class Flower extends Item{
 	}
 
 	public void visit(Player player){
-		map.main.restart("flowermap");
+		map.main.restart("flowermap", map.players );
 		destroy();
 	}
 }

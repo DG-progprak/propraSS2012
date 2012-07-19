@@ -12,8 +12,7 @@ public class Bomb extends Sprite {
 	Bomb(TileMap map, int tile_posX, int tile_posY, int bombradius) {
 		super(map, tile_posX, tile_posY);
 		this.bombradius = bombradius;
-		System.out.println(this.toString() + " " + this.posX + " " + this.posY);
-		// TODO Auto-generated constructor stub
+		//System.out.println(this.toString() + " " + this.posX + " " + this.posY);
 	}
 	
 	public void update(){

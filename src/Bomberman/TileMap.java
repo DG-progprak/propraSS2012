@@ -14,7 +14,7 @@ public class TileMap {
 	public int mapHeight = 13;
 	public int mapWidth = 13;
 	
-	private int players = 2;
+	public int players = 1;
 	
 	public Tile[][] tiles = new Tile[mapHeight][mapWidth];
 	ArrayList<Sprite> sprites = new ArrayList<Sprite>();
@@ -28,9 +28,10 @@ public class TileMap {
 	 * tile y position: line number
 	 * TODO error handling, check if txt file is valid map / char is valid tiletype
 	 */ 
-	TileMap(Main main, String mapname)
+	TileMap(Main main, String mapname, int players)
 	{
 		this.main = main;
+		this.players = players;
 		
 		if ( !mapname.equals("random") ){
 			loadMap(mapname);
@@ -65,7 +66,7 @@ public class TileMap {
 
 	
 	public void setTile(int x, int y, char tiletype){
-		System.out.println("setting tile [" + x + "," + y + "] to type: " + tiletype);
+		//System.out.println("setting tile [" + x + "," + y + "] to type: " + tiletype);
 		switch(tiletype){
 		
 			//floor
@@ -203,6 +204,19 @@ public class TileMap {
 		for(Sprite sprite : spritescopy){
 			sprite.update();
 		}
+	}
+	
+	public void playerdead(Player player){
+		if (players == 2){
+			if (player.player == 1){
+				System.out.println("Player 2 Won the game");
+			}else if (player.player == 2){
+				System.out.println("Player 1 Won the game");
+			}
+		} else if (players == 1){
+			System.out.println("Game Over");
+		}
+		main.restart("random", players);		
 	}
 	
 

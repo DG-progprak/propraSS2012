@@ -5,7 +5,7 @@ public class Player extends Creature {
 	
 	private int z = 2;
 	
-	private int player;
+	public int player;
     private int bombradius=1;
     	
 	Player(TileMap map, int tile_posX, int tile_posY) {
@@ -22,10 +22,9 @@ public class Player extends Creature {
 	
 	
 	public void action(String action) {
-	
-		System.out.println("player: action " + action);//debug
 		
 		if (!isMoving) {
+			System.out.println("player: action " + action);//debug
 			
 			if (action.equals("up") || action.equals("down") || action.equals("left") || action.equals("right")){
 				currentDirection = action;
@@ -115,12 +114,16 @@ public class Player extends Creature {
 	}
 	
 	public void explode(){
-		destroy();
+		dead();
 	}
 	
 	public void monster(Monster monster){
-		destroy();
+		dead();
 	}
 	
+	private void dead(){
+		map.playerdead(this);
+		destroy();
+	}
 
 }
