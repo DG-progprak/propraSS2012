@@ -67,7 +67,9 @@ public class InputManager {
 		}
 		
 		else if(GUIInput.debug){
-			player1.setBombradius(3);
+			GUIInput.debug = false;
+			main.restart("random");
+			//player1.setBombradius(3);
 			//main.restart("testmapA");
 			//Zuruecksetzen, wenn x gedrueckt wird, lade map a
 			//Player.players = 0;

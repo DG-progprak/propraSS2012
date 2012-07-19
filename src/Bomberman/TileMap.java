@@ -29,27 +29,36 @@ public class TileMap {
 	TileMap(Main main, String mapname)
 	{
 		this.main = main;
-		String currentLine;
 		
-		try{
-			BufferedReader in = new BufferedReader (new FileReader("maps/" + mapname + ".txt"));
-			
-			for (int j = 0; j < mapHeight; j++){
+		if ( !mapname.equals("random") ){
+			loadMap(mapname);
+		} else {
+			//random map
+			MapGenerator gen = new MapGenerator(this);
+		}
+		
+	}
+	
+	public void loadMap(String mapname) {
+		String currentLine;
+
+		try {
+			BufferedReader in = new BufferedReader(new FileReader("maps/"
+					+ mapname + ".txt"));
+
+			for (int j = 0; j < mapHeight; j++) {
 				currentLine = in.readLine();
-				for (int i = 0; i < mapWidth; i++){
+				for (int i = 0; i < mapWidth; i++) {
 					this.setTile(i, j, currentLine.charAt(i));
 				}
 			}
-			
-		} catch (IOException e){
+
+		} catch (IOException e) {
 			System.err.println(e);
 		}
-		
+
 		spawnSprite(1, 1, 'P');
 		spawnSprite(11, 11, 'P');
-		
-		//spawn_player1();
-		//spawn_player2();
 	}
 
 	
@@ -105,7 +114,7 @@ public class TileMap {
 						
 			//default : floor
 			default  :  tiles[x][y] = new Tile(' ');
-		
+						break;
 		}
 				
 	}
@@ -132,7 +141,6 @@ public class TileMap {
 					
 		case 'g':	sprite = new Goal (this, x, y);
 					break;
-
 		}
 	
 		if(sprite != null){

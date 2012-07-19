@@ -11,30 +11,18 @@ public class ImageLoader {
 
 	static private ImageIcon floorTile = new ImageIcon ("images/tiles/floor.png");
 	static private ImageIcon blockTile = new ImageIcon ("images/tiles/block.png");
-	static private ImageIcon goalTile = new ImageIcon ("images/tiles/goal.png");
-	static private ImageIcon stoneTile = new ImageIcon ("images/tiles/stone.png");
-	static private ImageIcon flowerTile = new ImageIcon ("images/items/flower.png");
-	static private ImageIcon powerupTile = new ImageIcon ("images/items/powerup.png");
-	
 
 	
 	public static ImageIcon getTileImage(char type){
 		switch(type){
 			case 'X' : return blockTile;
-			case 'G' : return goalTile;
-			//neue cases
-			case 'Y' : return stoneTile;
-			case 'S' : return stoneTile;
-			case 'F' : return flowerTile;
-			case 'P' : return powerupTile;
+
 			default: return floorTile;
 		}
 	}
 	
 	public static void loadImages(){
-		
-		images.put( "stone" , new ImageIcon ("images/tiles/stone.png") );
-		
+			
 		/** store player1 pictures in Map Images */
 		images.put( "player1_up_1" , new ImageIcon ("images/player/player1/back-0.png") );
 		images.put( "player1_up_2" , new ImageIcon ("images/player/player1/back-1.png") );
@@ -55,26 +43,27 @@ public class ImageLoader {
 		images.put( "player2_right_1" , new ImageIcon ("images/player/player2/right-0.png") );
 		images.put( "player2_right_2" , new ImageIcon ("images/player/player2/right-1.png") );
 		
+		//bomb
+		images.put( "bomb_1" , new ImageIcon ("images/bomb/bomb1.png") );
+		images.put( "bomb_2" , new ImageIcon ("images/bomb/bomb2.png") );
+		
 		//explosion
 		images.put( "explosion1" , new ImageIcon ("images/explosion/explosion1.png") );
 		images.put( "explosion2" , new ImageIcon ("images/explosion/explosion2.png") );
 		images.put( "explosion3" , new ImageIcon ("images/explosion/explosion3.png") );
 		
+		//stone
+		images.put( "stone" , new ImageIcon ("images/tiles/stone.png") );
 		
 		//PowerUp 
 		images.put( "powerup" , new ImageIcon ("images/items/powerup.png") );
 		
 		//Exit
 		images.put( "goal" , new ImageIcon ("images/tiles/goal.png") );
-		
 				
 		//Bonuslevel
 		images.put( "flower" , new ImageIcon ("images/items/flower.png") );
-		
-		images.put( "bomb_1" , new ImageIcon ("images/bomb/bomb1.png") );
-		images.put( "bomb_2" , new ImageIcon ("images/bomb/bomb2.png") );
-		
-		System.out.println(images.get("player1_down_1").toString());
+			
 	}
 	
 	public static ImageIcon getImage(String key){
