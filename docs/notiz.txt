@@ -3,9 +3,7 @@
 
 
 
-Einstellen ob 1 oder 2 Spieler
 
 
-Menüführung 
 
-
+Javadoc

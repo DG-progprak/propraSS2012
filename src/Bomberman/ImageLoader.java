@@ -79,6 +79,18 @@ public class ImageLoader {
 				
 		//Bonuslevel
 		images.put( "flower" , new ImageIcon ("images/items/flower.png") );
+		
+		//Menu-Head
+		images.put( "head" , new ImageIcon ("images/menu/menu.png") );
+		
+		//Menu-What
+		images.put( "what" , new ImageIcon ("images/menu/w.png") );
+				
+		//Menu-1P
+		images.put( "player1" , new ImageIcon ("images/menu/1.png") );
+				
+		//Menu-2P
+		images.put( "player2" , new ImageIcon ("images/menu/2.png") );
 			
 	}
 	

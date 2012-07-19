@@ -129,6 +129,29 @@ public class TileMap {
 						spawnSprite(x, y, 'm');
 						break;
 						
+			//Question for Menu
+			case 'w' :  tiles[x][y] = new Tile(' ');
+						spawnSprite(x, y, 'w');
+						break;
+						
+						
+			//Heading for Menu
+			case 'h' :  tiles[x][y] = new Tile(' ');
+						spawnSprite(x, y, 'h');
+						break;
+						
+						
+			//Choose 1 Player
+			case '1' :  tiles[x][y] = new Tile(' ');
+						spawnSprite(x, y, '1');
+						break;
+						
+			//Choose 2 Players
+			case '2' :  tiles[x][y] = new Tile(' ');
+						spawnSprite(x, y, '2');
+						break;
+						
+						
 			//default : floor
 			default  :  tiles[x][y] = new Tile(' ');
 						break;
@@ -161,6 +184,18 @@ public class TileMap {
 					
 		case 'g':	sprite = new Goal (this, x, y);
 					break;
+					
+				case 'h':	sprite = new Head (this, x, y);
+							break;
+							
+				case 'w':	sprite = new What (this, x, y);
+							break;
+							
+				case '1':	sprite = new Player1 (this, x, y);
+							break;
+							
+				case '2':	sprite = new Player2 (this, x, y);
+							break;
 		}
 	
 		if(sprite != null){
