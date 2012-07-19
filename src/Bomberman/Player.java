@@ -6,14 +6,8 @@ public class Player extends Creature {
 	private int z = 2;
 	
 	private int player;
-	private int fc=0;
     private int bombradius=1;
-    
-	private boolean anim_only=false;
-	private boolean powerup=false;
-	private boolean flower=false;
-	private String currentDirection;
-	
+    	
 	Player(TileMap map, int tile_posX, int tile_posY) {
 		super(map, tile_posX, tile_posY);
 		posX = map.X_TileToPixel(tile_posX);
@@ -110,18 +104,21 @@ public class Player extends Creature {
 	public int tposY(){
 		return ( (posY + 10 + 8) / 16 );
 	}
-
-
+	
 	public int getZ() {
 		return z;
 	}
-	
+
 
 	public void setBombradius(int bombradius) {
 		this.bombradius = bombradius;
 	}
 	
 	public void explode(){
+		destroy();
+	}
+	
+	public void monster(Monster monster){
 		destroy();
 	}
 	

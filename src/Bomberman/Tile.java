@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 public class Tile {
-	
+		
 	private ImageIcon image;
 	private ArrayList<Sprite> sprites = new ArrayList<Sprite>();
 	private boolean blocked;
@@ -135,6 +135,13 @@ public class Tile {
 		ArrayList<Sprite> spritescopy = new ArrayList<Sprite>(sprites);
 		for(Sprite sprite : spritescopy){
 			sprite.visit(player);
+		}
+	}
+	
+	public void monster(Monster monster){
+		ArrayList<Sprite> spritescopy = new ArrayList<Sprite>(sprites);
+		for(Sprite sprite : spritescopy){
+			sprite.monster(monster);
 		}
 	}
 	

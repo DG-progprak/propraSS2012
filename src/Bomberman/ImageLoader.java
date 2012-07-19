@@ -32,6 +32,7 @@ public class ImageLoader {
 		images.put( "player1_left_2" , new ImageIcon ("images/player/player1/left-1.png") );
 		images.put( "player1_right_1" , new ImageIcon ("images/player/player1/right-0.png") );
 		images.put( "player1_right_2" , new ImageIcon ("images/player/player1/right-1.png") );
+		images.put( "player1_fallen" , new ImageIcon ("images/player/player1/fallen.png") );
 		
 		/** store player2 pictures in Map Images */
 		images.put( "player2_up_1" , new ImageIcon ("images/player/player2/back-0.png") );
@@ -42,6 +43,7 @@ public class ImageLoader {
 		images.put( "player2_left_2" , new ImageIcon ("images/player/player2/left-1.png") );
 		images.put( "player2_right_1" , new ImageIcon ("images/player/player2/right-0.png") );
 		images.put( "player2_right_2" , new ImageIcon ("images/player/player2/right-1.png") );
+		images.put( "player2_fallen" , new ImageIcon ("images/player/player2/fallen.png") );
 		
 		//bomb
 		images.put( "bomb_1" , new ImageIcon ("images/bomb/bomb1.png") );
@@ -53,7 +55,7 @@ public class ImageLoader {
 		images.put( "explosion3" , new ImageIcon ("images/explosion/explosion3.png") );
 		
 		//stone
-		images.put( "stone" , new ImageIcon ("images/tiles/stone.png") );
+		images.put( "stone" , new ImageIcon ("images/tiles/stone2.png") );
 		
 		//PowerUp 
 		images.put( "powerup" , new ImageIcon ("images/items/powerup.png") );

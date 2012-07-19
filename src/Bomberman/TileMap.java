@@ -14,6 +14,8 @@ public class TileMap {
 	public int mapHeight = 13;
 	public int mapWidth = 13;
 	
+	private int players = 2;
+	
 	public Tile[][] tiles = new Tile[mapHeight][mapWidth];
 	ArrayList<Sprite> sprites = new ArrayList<Sprite>();
 	
@@ -34,7 +36,7 @@ public class TileMap {
 			loadMap(mapname);
 		} else {
 			//random map
-			MapGenerator gen = new MapGenerator(this);
+			MapGenerator gen = new MapGenerator(this, players);
 		}
 		
 	}
@@ -77,7 +79,12 @@ public class TileMap {
 			//stone
 			case 'S' :  tiles[x][y] = new Tile(' ');
 						spawnSprite(x, y, 'S');
-						break;			
+						break;
+						
+			//player
+			case 'P' :  tiles[x][y] = new Tile(' ');
+						spawnSprite(x, y, 'P');
+						break;	
 		
 			//goal
 			case 'g' :	tiles[x][y] = new Tile(' ');
@@ -112,6 +119,11 @@ public class TileMap {
 						spawnSprite(x, y, 'S');
 						break;
 						
+			//monster
+			case 'm' :  tiles[x][y] = new Tile(' ');
+						spawnSprite(x, y, 'm');
+						break;
+						
 			//default : floor
 			default  :  tiles[x][y] = new Tile(' ');
 						break;
@@ -137,6 +149,9 @@ public class TileMap {
 					break;
 					
 		case 'f':	sprite = new Flower (this, x, y);
+					break;
+					
+		case 'm':	sprite = new Monster (this, x, y);
 					break;
 					
 		case 'g':	sprite = new Goal (this, x, y);

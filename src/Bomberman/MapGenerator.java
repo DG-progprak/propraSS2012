@@ -15,12 +15,13 @@ public class MapGenerator {
 	
 	private int players = 2;
 	
-	Random rand = new Random();
+	private Random rand = new Random();
 	
 	TileMap map;
 	
-	MapGenerator(TileMap map){
+	MapGenerator(TileMap map, int players){
 		this.map = map;
+		this.players = players;
 		
 		test();
 		setBlocks();
@@ -186,11 +187,13 @@ public class MapGenerator {
 			c = randomItem();
 			//yes. item behind stone?
 			r = rand.nextDouble();
-			if (r < 0.75) c = Character.toUpperCase(c);
+			if (r < 0.75) c = Character.toUpperCase(c);	
 		//no. spawn stone?
+		} else if (r < 0.04){
+			c = 'm';
 		} else if (r < 0.25){
 			c = 'S';
-		}	
+		}
 		
 		//spawn goal
 		if ( (players == 1) && (count == goal) ) c = 'g';

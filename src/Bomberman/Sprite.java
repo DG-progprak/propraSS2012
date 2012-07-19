@@ -66,6 +66,10 @@ public abstract class Sprite {
 	public void visit(Player player){
 		
 	}
+	
+	public void monster(Monster monster){
+		
+	}
 
 	
 	public int getZ() {
