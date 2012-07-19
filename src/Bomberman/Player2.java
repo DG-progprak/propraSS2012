@@ -12,7 +12,7 @@ public class Player2 extends Menuitem{
 	}
 
 	public void visit(Player player){
-		map.main.players=2;
-		map.main.restart("random", map.players );
+		
+		map.main.restart("random", 2 );
 	}
 }
