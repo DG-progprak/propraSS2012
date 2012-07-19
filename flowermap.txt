@@ -1,0 +1,13 @@
+XXXXXXXXXXXXX
+X      FFF  X
+X  F  F     X
+X I      F  X
+X         I X
+XF    F     X
+X FFF F F   X
+X           X
+X IF F F FF X
+X           X
+X  F    F   X
+X    G      X
+XXXXXXXXXXXXX

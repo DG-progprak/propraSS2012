@@ -60,7 +60,7 @@ public class TileMap {
 		}
 
 		spawnSprite(1, 1, 'P');
-		spawnSprite(11, 11, 'P');
+		if (players == 2) spawnSprite(11, 11, 'P');
 	}
 
 	
